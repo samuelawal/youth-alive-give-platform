@@ -1,5 +1,7 @@
+import "./globals.css";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Toaster } from "react-hot-toast";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -9,6 +11,22 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+// Additional fonts for global use
+const bebasNeue = Geist({
+  variable: "--font-bebas-neue",
+  subsets: ["latin"],
+});
+
+const dmSans = Geist({
+  variable: "--font-dm-sans", 
+  subsets: ["latin"],
+});
+
+const mulish = Geist({
+  variable: "--font-mulish",
   subsets: ["latin"],
 });
 
@@ -24,10 +42,37 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet"></link>
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${bebasNeue.variable} ${dmSans.variable} ${mulish.variable} antialiased`}
       >
         {children}
+        <Toaster
+          position="top-right"
+          toastOptions={{
+            duration: 4000,
+            style: {
+              background: '#363636',
+              color: '#fff',
+            },
+            success: {
+              duration: 3000,
+              style: {
+                background: '#10B981',
+                color: '#fff',
+              },
+            },
+            error: {
+              duration: 5000,
+              style: {
+                background: '#EF4444',
+                color: '#fff',
+              },
+            },
+          }}
+        />
       </body>
     </html>
   );
