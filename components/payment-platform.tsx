@@ -48,7 +48,7 @@ export default function PaymentPlatform() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    alert("Donation submitted successfully!")
+    alert("Giver submitted successfully!")
   }
 
   return (

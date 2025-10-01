@@ -37,11 +37,12 @@ import {
 } from "lucide-react";
 import { Transaction } from "@/types/transaction";
 import axios from "axios";
+import apiClient from "@/lib/api-client";
 import toast from "react-hot-toast";
 import TransactionDetails from "./transaction-details";
 
 // API Base URL
-const API_BASE_URL = process.env.NEXT_PUBLIC_BACKEND_BASE_URL || "http://172.16.51.200:8080";
+// API_BASE_URL removed - using apiClient instead
 
 interface TransactionHistoryProps {
   onBack: () => void;
@@ -236,7 +237,7 @@ export default function TransactionHistory({ onBack }: TransactionHistoryProps) 
     setError(null);
     
     try {
-      const response = await axios.get<Transaction[]>(`${API_BASE_URL}/transactions/collection/no/${collectionNumber.trim()}`);
+      const response = await apiClient.get<Transaction[]>(`transactions/collection/no/${collectionNumber.trim()}`);
 
       setData(response.data);
       setTotalElements(response.data.length);

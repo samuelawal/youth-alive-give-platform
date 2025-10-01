@@ -36,12 +36,12 @@ import {
   ArrowDown
 } from "lucide-react";
 import { Transaction } from "@/types/transaction";
-import axios from "axios";
+import apiClient from '@/lib/api-client';
 import toast from "react-hot-toast";
 import TransactionDetails from "./transaction-details";
 
 // API Base URL
-const API_BASE_URL = process.env.NEXT_PUBLIC_BACKEND_BASE_URL || "http://172.16.51.200:8080";
+// API_BASE_URL removed - using apiClient instead
 
 // API Response types
 interface APITransactionResponse {
@@ -274,7 +274,7 @@ export default function TransactionHistory({ onBack }: TransactionHistoryProps) 
     setError(null);
     
     try {
-      const response = await axios.get<APICollectionResponse>(`${API_BASE_URL}collections/${collectionNumber.trim()}`);
+      const response = await apiClient.get<APICollectionResponse>(`collections/${collectionNumber.trim()}`);
       const collectionData = response.data;
       
       // Transform the response to match our Transaction interface

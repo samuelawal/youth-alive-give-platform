@@ -28,7 +28,7 @@ export default function PaymentContent({ selectedPayment, selectedSupport }: Pay
           )}
           {selectedSupport === "report" && (
             <p>
-              Access your donation reports and transaction history. Reports are generated monthly and sent to your
+              Access your giver reports and transaction history. Reports are generated monthly and sent to your
               registered email address.
             </p>
           )}
@@ -55,8 +55,8 @@ export default function PaymentContent({ selectedPayment, selectedSupport }: Pay
       <div className="text-gray-300 text-sm">
         {selectedPayment === "card" && "Secure card payment processing through multiple providers"}
         {selectedPayment === "local-bank-transfer" && "Pay using local bank transfer options"}
-        {selectedPayment === "bank-transfer" && "Direct bank transfer for local and international donations"}
-        {selectedPayment === "churchpad" && "International donations through ChurchPad platform"}
+        {selectedPayment === "bank-transfer" && "Direct bank transfer for local and international gifts"}
+        {selectedPayment === "churchpad" && "International gifts through ChurchPad platform"}
       </div>
 
       <PaymentProviders />
